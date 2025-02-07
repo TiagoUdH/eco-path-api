@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from app.models import CustomUser
+from app.models import CustomUser, CollectionRequest
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -11,7 +11,7 @@ class CustomUserAdmin(UserAdmin):
 
     # Não inclua o campo 'usable_password' explicitamente
     fieldsets = (
-        (None, {'fields': ('username', 'password', 'email', 'first_name', 'last_name', 'driver', 'want_collect', 'address', 'age', 'phone')}),
+        (None, {'fields': ('username', 'password', 'email', 'first_name', 'last_name', 'driver', 'address', 'neighborhood', 'age', 'phone')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
@@ -19,8 +19,9 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'password1', 'password2', 'email', 'first_name', 'last_name', 'driver', 'want_collect', 'address', 'age', 'phone'),
+            'fields': ('username', 'password1', 'password2', 'email', 'first_name', 'last_name', 'driver', 'address', 'neighborhood', 'age', 'phone'),
         }),
     )
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CollectionRequest)
