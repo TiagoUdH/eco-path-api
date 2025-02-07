@@ -112,7 +112,7 @@ class UnattendedRequestsView(APIView):
                 "requester": requester.id,
                 "solicitation_time": request.solicitation_time,
                 "address": requester.address,
-                "neighborhood": requester.address.split(',')[1] if ',' in requester.address else "Não disponível",  # Tentando pegar o bairro da rua, caso a rua tenha sido informada de maneira simples
+                "neighborhood": requester.neighborhood,  # Tentando pegar o bairro da rua, caso a rua tenha sido informada de maneira simples
             })
         
         return Response(result, status=status.HTTP_200_OK)
